@@ -1,18 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="app.lampstudio.com.quanlychitieu.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/border4_gray" >
+        <TextView
+            android:id="@+id/title_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cash"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="4dp"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textColor="@color/color_black"
+            />
+        <TextView
+            android:id="@+id/title_credit"
+            android:layout_below="@+id/title_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/credit"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="4dp"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textColor="@color/color_black"
+            />
+        <TextView
+            android:id="@+id/title_saved_money"
+            android:layout_below="@+id/title_credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/saved_money"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="4dp"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textColor="@color/color_black"
+            />
+        <TextView
+            android:id="@+id/title_sum_money"
+            android:layout_below="@+id/title_saved_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sum_money"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textStyle="bold"
+            android:textColor="@color/color_black"/>
+        <TextView
+            android:id="@+id/cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10000"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="4dp"
+            android:gravity="end"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textColor="@color/color_black"/>
+        <TextView
+            android:id="@+id/credit"
+            android:layout_below="@+id/title_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2000"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="4dp"
+            android:gravity="end"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textColor="@color/color_black"/>
+        <TextView
+            android:id="@+id/saved_money"
+            android:layout_below="@+id/title_credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3000"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="4dp"
+            android:gravity="end"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textColor="@color/color_black"/>
+        <TextView
+            android:id="@+id/sum_money"
+            android:layout_below="@+id/title_saved_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4000"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:gravity="end"
+            android:textSize="@dimen/tsize_ui1_top"
+            android:textStyle="bold"
+            android:textColor="@color/color_black"/>
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_manager_acc"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/manager_acc"
+            android:background="@drawable/border4_blue"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/color_white"
+            />
+        <Button
+            android:id="@+id/btn_about"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/about"
+            android:background="@drawable/border4_blue"
+            android:textColor="@color/color_white"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            />
+
+        <Button
+            android:id="@+id/btn_add_deal"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_deal"
+            android:layout_above="@id/btn_manager_acc"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border4_blue"
+            android:textColor="@color/color_white"
+            />
+        <Button
+            android:id="@+id/btn_statis_deal"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/statis_deal"
+            android:layout_above="@id/btn_manager_acc"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border4_blue"
+            android:textColor="@color/color_white"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

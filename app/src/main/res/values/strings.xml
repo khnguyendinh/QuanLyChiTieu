@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">QuanLyChiTieu</string>
+    <string name="cash">Tiền mặt</string>
+    <string name="credit">Thẻ tín dụng</string>
+    <string name="saved_money">Tiền gửi tiết kiệm</string>
+    <string name="sum_money">Tổng số tiền</string>
+    <string name="add_deal">Thêm giao dịch</string>
+    <string name="statis_deal">Thống kê giao dịch</string>
+    <string name="manager_acc">Quản lý tài khoản</string>
+    <string name="about">Giới thiệu</string>
 </resources>
