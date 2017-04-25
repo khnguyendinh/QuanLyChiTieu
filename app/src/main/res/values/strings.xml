@@ -8,4 +8,18 @@
     <string name="statis_deal">Thống kê giao dịch</string>
     <string name="manager_acc">Quản lý tài khoản</string>
     <string name="about">Giới thiệu</string>
+    <string name="type_acc">Tài khoản</string>
+    <string name="type_deal">Loại giao dịch</string>
+    <string name="spend">Khoản chi</string>
+    <string name="revenue">Khoản thu</string>
+    <string name="iput_money">Xin mời bạn nhập số tiền</string>
+    <string name="iput_content_deal">Xin mời bạn nhập nội dung giao dịch</string>
+    <string name="save">Lưu</string>
+    <string name="save_closed">Lưu và đóng</string>
+    <string name="title_activity_add_transaction">Add_transaction</string>
+    <string-array name="type_acc">
+        <item>Tiền mặt</item>
+        <item>Thẻ tín dụng</item>
+        <item>Tiền gửi tiết kiệm</item>
+    </string-array>
 </resources>
