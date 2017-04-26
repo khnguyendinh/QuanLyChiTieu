@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/border4_gray">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/cash"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:textSize="@dimen/tsize_20"
+        android:textColor="@color/color_black"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/delete"
+        android:background="@drawable/border4_blue"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:textColor="@color/color_white"
+        android:textAllCaps="false"
+        android:textSize="@dimen/tsize_20"
+        />
+
+</RelativeLayout>

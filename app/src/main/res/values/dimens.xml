@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tsize_20">20dp</dimen>
-    <dimen name="tsize_18">18dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="tsize_20">20sp</dimen>
+    <dimen name="tsize_18">18sp</dimen>
+    <dimen name="fab_margin">16sp</dimen>
 </resources>

@@ -17,9 +17,30 @@
     <string name="save">Lưu</string>
     <string name="save_closed">Lưu và đóng</string>
     <string name="title_activity_add_transaction">Add_transaction</string>
+    <string name="add">Thêm</string>
+    <string name="delete">Xóa</string>
+    <string name="from_date">Từ ngày</string>
+    <string name="to_date">Đến ngày</string>
+    <string name="date">Ngày giờ</string>
+    <string name="content">Nội dung</string>
+    <string name="amount_money">Số tiền</string>
+    <string name="over_balance">Số dư</string>
+    <string name="type_transaction">Loại giao dịch</string>
     <string-array name="type_acc">
         <item>Tiền mặt</item>
         <item>Thẻ tín dụng</item>
         <item>Tiền gửi tiết kiệm</item>
     </string-array>
+    <string-array name="add_acc">
+        <item>Thêm tài khoản</item>
+        <item>Tiền mặt</item>
+        <item>Thẻ tín dụng</item>
+        <item>Tiền gửi tiết kiệm</item>
+    </string-array>
+    <string-array name="type_deal">
+        <item>Khoản thu</item>
+        <item>Khoản chi</item>
+    </string-array>
+    <string name="title_activity_manager_acc">Manager_acc</string>
+    <string name="title_activity_statis_deal">Statis_deal</string>
 </resources>
