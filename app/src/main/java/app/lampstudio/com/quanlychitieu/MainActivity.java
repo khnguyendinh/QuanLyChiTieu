@@ -1,13 +1,18 @@
 package app.lampstudio.com.quanlychitieu;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -52,12 +57,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sqliteDatabase = new SqliteDatabase(MainActivity.this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_about:
-                intent = new Intent(MainActivity.this,Add_transaction.class);
-                startActivity(intent);
+                final Dialog dialog = new Dialog(this);
+                dialog.setContentView(R.layout.dialog_infor_app);
+                dialog.setTitle(R.string.title_dialog);
+                TextView textView = (TextView) dialog.findViewById(android.R.id.title);
+                if(textView != null) {
+                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                }
+                TextView name = (TextView) dialog.findViewById(R.id.name_app);
+                name.setText(Html.fromHtml("<b>App name</b> : Manager money"));
+                TextView version = (TextView) dialog.findViewById(R.id.version_app);
+                version.setText(Html.fromHtml("<b>Version</b> : 1.0"));
+                TextView dev = (TextView) dialog.findViewById(R.id.dev_app);
+                dev.setText(Html.fromHtml("<b>Developer</b> : Nguyễn Đình Khoa"));
+                TextView mail = (TextView) dialog.findViewById(R.id.mail_dev);
+                mail.setText(Html.fromHtml("<b>Email Support</b> : khnguyendinh@gmail.com"));
+                Button btn_close = (Button) dialog.findViewById(R.id.btn_close);
+                btn_close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
                 break;
             case btn_add_deal:
                 intent = new Intent(MainActivity.this,Add_transaction.class);

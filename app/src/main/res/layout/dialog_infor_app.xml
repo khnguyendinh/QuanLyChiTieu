@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/name_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tsize_20"
+        android:textColor="@color/color_black"
+         />
+    <TextView
+        android:id="@+id/version_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tsize_20"
+        android:textColor="@color/color_black"
+         />
+    <TextView
+        android:id="@+id/dev_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tsize_20"
+        android:textColor="@color/color_black"
+         />
+    <TextView
+        android:id="@+id/mail_dev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tsize_20"
+        android:textColor="@color/color_black"
+         />
+    <Button
+        android:layout_marginTop="45dp"
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Close"
+        android:textSize="@dimen/tsize_20"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
