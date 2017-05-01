@@ -43,4 +43,5 @@
     </string-array>
     <string name="title_activity_manager_acc">Manager_acc</string>
     <string name="title_activity_statis_deal">Statis_deal</string>
+    <string name="add_money">Please input money !</string>
 </resources>

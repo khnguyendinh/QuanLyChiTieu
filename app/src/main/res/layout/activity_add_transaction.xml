@@ -59,12 +59,13 @@
                     android:textColor="@color/color_black"
                     android:textSize="@dimen/tsize_18" />
                 <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/stroke4_blue"
-                    android:drawSelectorOnTop="true"
-                    android:entries="@array/type_acc"></Spinner>
+                    android:drawSelectorOnTop="true"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -77,22 +78,27 @@
                     android:textColor="@color/color_black"
                     android:textSize="@dimen/tsize_18" />
                 <RadioGroup
+                    android:id="@+id/rd_select"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/spend"
-                        android:textColor="@color/color_black"
-                        android:textSize="@dimen/tsize_18" />
-                    <RadioButton
+                        android:id="@+id/rd_thu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/revenue"
                         android:textColor="@color/color_black"
                         android:textSize="@dimen/tsize_18" />
+                    <RadioButton
+                        android:id="@+id/rd_chi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/spend"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/tsize_18" />
+
                 </RadioGroup>
                 <EditText
+                    android:id="@+id/money"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -104,6 +110,7 @@
                     android:paddingTop="5dp"
                     android:textSize="@dimen/tsize_20" />
                 <EditText
+                    android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -129,7 +136,7 @@
                         android:text="date"
                         android:textColor="@color/color_white" />
                     <Button
-                        android:id="@+id/time"
+                        android:id="@+id/btn_time"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_marginLeft="10dp"

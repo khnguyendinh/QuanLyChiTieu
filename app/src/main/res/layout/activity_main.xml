@@ -6,153 +6,87 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="app.lampstudio.com.quanlychitieu.MainActivity">
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/border4_gray" >
-        <TextView
-            android:id="@+id/title_cash"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cash"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="4dp"
-            android:textSize="@dimen/tsize_20"
-            android:textColor="@color/color_black"
-            />
-        <TextView
-            android:id="@+id/title_credit"
-            android:layout_below="@+id/title_cash"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/credit"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="4dp"
-            android:textSize="@dimen/tsize_20"
-            android:textColor="@color/color_black"
-            />
-        <TextView
-            android:id="@+id/title_saved_money"
-            android:layout_below="@+id/title_credit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/saved_money"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="4dp"
-            android:textSize="@dimen/tsize_20"
-            android:textColor="@color/color_black"
-            />
-        <TextView
-            android:id="@+id/title_sum_money"
-            android:layout_below="@+id/title_saved_money"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sum_money"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="@dimen/tsize_20"
-            android:textStyle="bold"
-            android:textColor="@color/color_black"/>
-        <TextView
-            android:id="@+id/cash"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="10000"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="4dp"
-            android:gravity="end"
-            android:textSize="@dimen/tsize_20"
-            android:textColor="@color/color_black"/>
-        <TextView
-            android:id="@+id/credit"
-            android:layout_below="@+id/title_cash"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2000"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="4dp"
-            android:gravity="end"
-            android:textSize="@dimen/tsize_20"
-            android:textColor="@color/color_black"/>
-        <TextView
-            android:id="@+id/saved_money"
-            android:layout_below="@+id/title_credit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="3000"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="4dp"
-            android:gravity="end"
-            android:textSize="@dimen/tsize_20"
-            android:textColor="@color/color_black"/>
-        <TextView
-            android:id="@+id/sum_money"
-            android:layout_below="@+id/title_saved_money"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="4000"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:gravity="end"
-            android:textSize="@dimen/tsize_20"
-            android:textStyle="bold"
-            android:textColor="@color/color_black"/>
-        </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginBottom="15dp">
-
-        <Button
-            android:id="@+id/btn_manager_acc"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:text="@string/manager_acc"
-            android:background="@drawable/border4_blue"
-            android:layout_alignParentBottom="true"
-            android:textColor="@color/color_white"
-            />
-        <Button
-            android:id="@+id/btn_about"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:text="@string/about"
-            android:background="@drawable/border4_blue"
-            android:textColor="@color/color_white"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            />
-
+        android:layout_marginBottom="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
         <Button
             android:id="@+id/btn_add_deal"
-            android:layout_width="170dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/add_deal"
-            android:layout_above="@id/btn_manager_acc"
-            android:layout_marginBottom="15dp"
             android:background="@drawable/border4_blue"
             android:textColor="@color/color_white"
+            android:layout_marginRight="10dp"
             />
         <Button
             android:id="@+id/btn_statis_deal"
-            android:layout_width="170dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/statis_deal"
-            android:layout_above="@id/btn_manager_acc"
-            android:layout_marginBottom="15dp"
             android:background="@drawable/border4_blue"
             android:textColor="@color/color_white"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
             />
-    </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_manager_acc"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/manager_acc"
+                android:background="@drawable/border4_blue"
+                android:textColor="@color/color_white"
+                android:layout_marginRight="10dp"
+                />
+            <Button
+                android:id="@+id/btn_about"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/about"
+                android:background="@drawable/border4_blue"
+                android:textColor="@color/color_white"
+                android:layout_marginLeft="10dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+
+        android:layout_above="@id/layout_btn">
+        <ListView
+            android:id="@+id/list_acc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="4dp"></ListView>
+        </RelativeLayout>
+
 
 </RelativeLayout>
