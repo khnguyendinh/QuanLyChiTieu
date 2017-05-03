@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.lampstudio.com.quanlychitieu">
+    package="app.lampstudio.com.manager_money">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="app.lampstudio.com.manager_money.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,15 +17,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Add_transaction"
+            android:name="app.lampstudio.com.manager_money.Add_transaction"
             android:label="@string/title_activity_add_transaction"></activity>
         <activity
-            android:name=".Manager_acc"
+            android:name="app.lampstudio.com.manager_money.Manager_acc"
             android:label="@string/title_activity_manager_acc"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Statis_deal"
+            android:name="app.lampstudio.com.manager_money.Statis_deal"
             android:label="@string/title_activity_statis_deal"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

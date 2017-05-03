@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "app.lampstudio.com.quanlychitieu"
+        applicationId "app.lampstudio.com.manager_money"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
