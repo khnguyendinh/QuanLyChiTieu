@@ -23,7 +23,7 @@
     <string name="to_date">To</string>
     <string name="date">Date Time</string>
     <string name="content">Content</string>
-    <string name="amount_money">Amouts of money</string>
+    <string name="amount_money">Amount of money</string>
     <string name="over_balance">Balance</string>
     <string name="type_transaction">Type Transaction</string>
     <string-array name="type_acc">
@@ -49,5 +49,8 @@
     <string name="version_app"><b>Version</b> : 1.0</string>
     <string name="dev_app"><b>Developer</b> : Nguyễn Đình Khoa</string>
     <string name="email_support"><b>Email Support</b> : khnguyendinh@gmail.com</string>
-
+    <string name="banner_ad_unit_id">ca-app-pub-7238758076685505/9101296674</string>
+    <string name="id_full_admob">ca-app-pub-7238758076685505/3054763076</string>
+    <string name="id_video_admob">ca-app-pub-7238758076685505/8961695876</string>
+    <string name="id_native_admob"> ca-app-pub-7238758076685505/4531496278</string>
 </resources>

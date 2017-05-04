@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,13 +14,20 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import app.lampstudio.com.manager_money.Adapter.StaticDealAdapter;
 import app.lampstudio.com.manager_money.database.DataApp;
+import app.lampstudio.com.manager_money.database.MyPref;
 import app.lampstudio.com.manager_money.database.SqliteDatabase;
+import app.lampstudio.com.manager_money.until.NetworkController;
 
 import static app.lampstudio.com.manager_money.Add_transaction.TYPE_DEAL.CHI;
 import static app.lampstudio.com.manager_money.Add_transaction.TYPE_DEAL.THU;
@@ -37,6 +45,9 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
     Calendar mEndDate;
     int id_type_acc_cur = 0;
     Add_transaction.TYPE_DEAL type_spend = THU;
+    private AdView mBannerAdView;
+    String TAG = "Statis_deal";
+    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +108,42 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
         });
         ShowDateAndTime();
         showListDeal();
+        mBannerAdView = (AdView) findViewById(R.id.adView);
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(this.getString(R.string.id_full_admob));
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                showFullAds();
+            }
+        });
+        showAds();
+    }
+    private void showAds() {
+        loadFullAd();
+    }
+    private void showFullAds() {
+        if (DataApp.getInstance().num_Full_Ads < DataApp.getInstance().inforAds.getNumfull()) {
+            DataApp.getInstance().num_Full_Ads++;
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+        }
+    }
+    private void loadFullAd() {
+        if (NetworkController.isNetworkAvailable(this)) {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                    .build();
+            mInterstitialAd.loadAd(adRequest);
+        }
+    }
+    private void loadAdView(AdView mBannerAdView) {
+        Log.e(TAG, "==========> load Adview");
+        mBannerAdView.setVisibility(View.VISIBLE);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mBannerAdView.loadAd(adRequest);
     }
 
     private void showListDeal() {
@@ -171,10 +218,18 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "Please select end date after start date", Toast.LENGTH_SHORT).show();
         }
     }
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        Intent intent = new Intent(Statis_deal.this,MainActivity.class);
-//        startActivity(intent);
-//    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (NetworkController.isNetworkAvailable(this)) {
+            loadAdView(mBannerAdView);
+        }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyPref.getInstance().saveFullAds(DataApp.getInstance().num_Full_Ads,this);
+        MyPref.getInstance().saveVideoAds(DataApp.getInstance().num_Video_Ads,this);
+    }
 }

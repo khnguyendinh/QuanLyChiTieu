@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,20 +19,29 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import app.lampstudio.com.manager_money.Model.ModelDeal;
 import app.lampstudio.com.manager_money.database.DataApp;
+import app.lampstudio.com.manager_money.database.MyPref;
 import app.lampstudio.com.manager_money.database.SqliteDatabase;
 import app.lampstudio.com.manager_money.presenter.Presenter_Add_deal;
+import app.lampstudio.com.manager_money.until.NetworkController;
 import app.lampstudio.com.manager_money.view.ViewAddDeal;
 
 public class Add_transaction extends AppCompatActivity implements ViewAddDeal, View.OnClickListener {
 
 
-    public static enum TYPE_DEAL {THU, CHI} ;
+    public static enum TYPE_DEAL {THU, CHI}
+
+    ;
     Spinner spinner;
     RadioButton rd_thu, rd_chi;
     RadioGroup rd_select;
@@ -44,10 +54,13 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
     SqliteDatabase sqliteDatabase;
     private String[] arraySpinner;
     Calendar mcurrentTime;
+    private AdView mBannerAdView;
+    String TAG = "Add_transaction";
+    InterstitialAd mInterstitialAd;
 
     Presenter_Add_deal presenter_add_deal;
     int id_type_acc_cur = 0;
-    TYPE_DEAL type_deal ;
+    TYPE_DEAL type_deal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +88,55 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
         ShowTypeAccount();
         ShowTypeSpend();
         ShowDateAndTime();
+        mBannerAdView = (AdView) findViewById(R.id.adView);
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(this.getString(R.string.id_full_admob));
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                showFullAds();
+            }
+        });
+        showAds();
+    }
+
+    private void showAds() {
+        loadFullAd();
+    }
+
+    private void loadFullAd() {
+        if (NetworkController.isNetworkAvailable(this)) {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                    .build();
+            mInterstitialAd.loadAd(adRequest);
+        }
+    }
+
+    private void showFullAds() {
+        if (DataApp.getInstance().num_Full_Ads < DataApp.getInstance().inforAds.getNumfull()) {
+            DataApp.getInstance().num_Full_Ads++;
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+        }
+    }
+
+    private void loadAdView(AdView mBannerAdView) {
+        Log.e(TAG, "==========> load Adview");
+        mBannerAdView.setVisibility(View.VISIBLE);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mBannerAdView.loadAd(adRequest);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mcurrentTime = Calendar.getInstance();
-
+        if (NetworkController.isNetworkAvailable(this)) {
+            loadAdView(mBannerAdView);
+        }
     }
 
     private void ShowDateAndTime() {
@@ -100,7 +155,7 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
         rd_select.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                switch (i){
+                switch (i) {
                     case R.id.rd_thu:
                         type_deal = TYPE_DEAL.THU;
                         break;
@@ -159,7 +214,7 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
                     }
 
                 };
-                DatePickerDialog pic = new DatePickerDialog(this,dateCallBack, mcurrentTime.get(Calendar.YEAR),
+                DatePickerDialog pic = new DatePickerDialog(this, dateCallBack, mcurrentTime.get(Calendar.YEAR),
                         mcurrentTime.get(Calendar.MONTH), mcurrentTime.get(Calendar.DATE));
                 pic.setTitle("Chọn ngày giao dịch");
                 pic.show();
@@ -182,19 +237,19 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
                 break;
             case R.id.btn_saveAndClose:
                 AddDealToDB();
-                Intent intent = new Intent(Add_transaction.this,MainActivity.class);
+                Intent intent = new Intent(Add_transaction.this, MainActivity.class);
                 startActivity(intent);
                 break;
         }
     }
 
     private void AddDealToDB() {
-        if(Integer.parseInt(money.getText().toString()) == 0){
+        if (Integer.parseInt(money.getText().toString()) == 0) {
             Toast.makeText(this, getString(R.string.add_money), Toast.LENGTH_SHORT).show();
             return;
         }
         long sum_money = DataApp.getInstance().hashMap_type_Acc.get(id_type_acc_cur).getSum_money();
-        switch (type_deal){
+        switch (type_deal) {
             case CHI:
                 sum_money = sum_money - Integer.parseInt(money.getText().toString());
                 break;
@@ -203,9 +258,9 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
                 break;
         }
         DataApp.getInstance().hashMap_type_Acc.get(id_type_acc_cur).setSum_money(sum_money);
-        ModelDeal mo1 = new ModelDeal(0,btn_date.getText().toString(),btn_time.getText().toString()
-                ,content.getText().toString(),Integer.parseInt(money.getText().toString()),sum_money,
-                id_type_acc_cur,type_deal.ordinal());
+        ModelDeal mo1 = new ModelDeal(0, btn_date.getText().toString(), btn_time.getText().toString()
+                , content.getText().toString(), Integer.parseInt(money.getText().toString()), sum_money,
+                id_type_acc_cur, type_deal.ordinal());
         presenter_add_deal.AddDeal(mo1);
     }
 
@@ -216,10 +271,10 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
         btn_date.setText(sdf.format(mcurrentTime.getTime()));
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        Intent intent = new Intent(Add_transaction.this,MainActivity.class);
-//        startActivity(intent);
-//    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyPref.getInstance().saveFullAds(DataApp.getInstance().num_Full_Ads, this);
+        MyPref.getInstance().saveVideoAds(DataApp.getInstance().num_Video_Ads, this);
+    }
 }

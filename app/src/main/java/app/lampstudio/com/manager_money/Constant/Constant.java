@@ -42,4 +42,10 @@ public class Constant {
             +");";
     Constant() {
     }
+    public static final String PREF_ADS = "ads";
+    public static final String NUMBER_FULL_ADS = "NUMBER_FULL_ADS";
+    public static final String NUMBER_VIDEO_ADS = "NUMBER_VIDEO_ADS";
+    public static final String DATE_ADS = "NUMBER_DATE_ADS";
+    public static final String URL_INFOR_ADS = "http://192.168.2.144:8080/get/infor/ads";
+    public static final String TAG_JSON_INFOR_ADS = "json_obj_req";
 }

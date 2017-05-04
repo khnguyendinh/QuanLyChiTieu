@@ -5,6 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import app.lampstudio.com.manager_money.Model.InforAds;
 import app.lampstudio.com.manager_money.Model.ModelDeal;
 import app.lampstudio.com.manager_money.Model.ModelTypeAcc;
 
@@ -18,6 +19,11 @@ public class DataApp {
     public HashMap<Integer,ModelTypeAcc> hashMap_type_Acc;
     public HashMap<Integer,String> hashMap_type_Deal;
     static DataApp instance = new DataApp();
+    public static InforAds inforAds = new InforAds(5000,7,3);
+    public int num_Full_Ads = 0;
+    public int num_Video_Ads = 0;
+    public String date_Ads ;
+    public boolean justShowVideo = false;
 
     DataApp() {
         Log.d("CRETAE", "DataApp: ");
@@ -32,4 +38,5 @@ public class DataApp {
     public static DataApp getInstance() {
         return instance;
     }
+
 }

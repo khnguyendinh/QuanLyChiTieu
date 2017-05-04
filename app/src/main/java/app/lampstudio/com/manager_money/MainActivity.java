@@ -9,20 +9,39 @@ import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import app.lampstudio.com.manager_money.Adapter.AdapterTypeAccount;
 import app.lampstudio.com.manager_money.Constant.Constant;
+import app.lampstudio.com.manager_money.Model.InforAds;
 import app.lampstudio.com.manager_money.Model.ModelTypeAcc;
 import app.lampstudio.com.manager_money.database.DataApp;
+import app.lampstudio.com.manager_money.database.MyPref;
 import app.lampstudio.com.manager_money.database.SqliteDatabase;
+import app.lampstudio.com.manager_money.until.NetworkController;
+import app.lampstudio.com.manager_money.volley.AppController;
 
+import static app.lampstudio.com.manager_money.Constant.Constant.TAG_JSON_INFOR_ADS;
+import static app.lampstudio.com.manager_money.Constant.Constant.URL_INFOR_ADS;
 import static app.lampstudio.com.manager_money.R.id.btn_add_deal;
 import static app.lampstudio.com.manager_money.R.id.btn_manager_acc;
 import static app.lampstudio.com.manager_money.R.id.btn_statis_deal;
@@ -38,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ListView listView;
     AdapterTypeAccount adapterTypeAccount;
     public ArrayList<ModelTypeAcc> myArrayList;
+    private AdView mBannerAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnStatiticDeal.setOnClickListener(this);
         btnManagerAcc.setOnClickListener(this);
         sqliteDatabase = new SqliteDatabase(MainActivity.this);
+        mBannerAdView = (AdView) findViewById(R.id.adView);
+
+    }
+
+    private void loadAdView(AdView mBannerAdView) {
+        Log.e(TAG, "==========> load Adview");
+        mBannerAdView.setVisibility(View.VISIBLE);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mBannerAdView.loadAd(adRequest);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -130,6 +159,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         ShowDataAccount();
+        if (NetworkController.isNetworkAvailable(this)) {
+            loadAdView(mBannerAdView);
+        }
+        jsonObjectRequest();
+        DataApp.getInstance().date_Ads = MyPref.getInstance().getDateAds(MainActivity.this);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String currentDateandTime = sdf.format(new Date());
+        if( !(DataApp.getInstance().date_Ads.equals(currentDateandTime))){
+            //TODO khac ngay thi reset lai gia tri ads
+            MyPref.getInstance().saveFullAds(0,this);
+            MyPref.getInstance().saveVideoAds(0,this);
+            MyPref.getInstance().saveDateAds(currentDateandTime.toString(),this);
+
+        }
+        DataApp.getInstance().num_Full_Ads = MyPref.getInstance().getFullAds(this);
+        DataApp.getInstance().num_Video_Ads =  MyPref.getInstance().getVideoAds(this);
     }
     boolean doubleBackToExitPressedOnce = false;
 
@@ -151,5 +196,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 doubleBackToExitPressedOnce=false;
             }
         }, 2000);
+    }
+    public void jsonObjectRequest(){
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                URL_INFOR_ADS, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        InforAds inforAds = new Gson().fromJson(response.toString(),InforAds.class);
+                        DataApp.getInstance().inforAds = inforAds;
+                        Log.d(TAG, "value number Full = " +DataApp.getInstance().inforAds.getNumfull());
+                        Log.d(TAG, "value number video = " +DataApp.getInstance().inforAds.getNumvideo());
+                        Log.d(TAG, "value number banner = " +DataApp.getInstance().inforAds.getNumbanner());
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonObjReq, TAG_JSON_INFOR_ADS);
+
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyPref.getInstance().saveFullAds(DataApp.getInstance().num_Full_Ads,this);
+        MyPref.getInstance().saveVideoAds(DataApp.getInstance().num_Video_Ads,this);
     }
 }
