@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Money Manager</string>
+    <string name="about">Thông tin</string>
+    <string name="add">Thêm</string>
+    <string name="add_deal">Thêm giao dịch</string>
+    <string name="add_money">Hãy nhập số tiền</string>
+    <string name="add_acc_money">Nhập số tiền</string>
+    <string name="add_acc_type">Nhập loại TK</string>
+    <string name="amount_money">Số tiền</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7238758076685505/9101296674</string>
+    <string name="cash">Tiền mặt</string>
+    <string name="content">Nội dung</string>
+    <string name="credit">Thẻ</string>
+    <string name="date">Thời gian</string>
+    <string name="delete">Xóa</string>
+    <string name="dev_app"><b>Developer</b> : Nguyễn Đình Khoa</string>
+    <string name="email_support"><b>Email Support</b> : khnguyendinh@gmail.com</string>
+    <string name="from_date">From</string>
+    <string name="id_full_admob">ca-app-pub-7238758076685505/3054763076</string>
+    <string name="id_native_admob">" ca-app-pub-7238758076685505/4531496278"</string>
+    <string name="id_video_admob">ca-app-pub-7238758076685505/8961695876</string>
+    <string name="iput_content_deal">Nội dung giao dịch</string>
+    <string name="iput_money">Số tiền giao dịch</string>
+    <string name="manager_acc">Quản lý TK</string>
+    <string name="name_app"><b>Tên ứng dụng</b> : Manager money</string>
+    <string name="over_balance">Số dư</string>
+    <string name="revenue">Thu</string>
+    <string name="save">Lưu</string>
+    <string name="save_closed">Lưu và đóng</string>
+    <string name="saved_money">Tiền tiết kiệm</string>
+    <string name="spend">Chi</string>
+    <string name="statis_deal">Thống kê giao dịch</string>
+    <string name="sum_money">Tổng tiền</string>
+    <string name="title_activity_add_transaction">Thêm giao dịch</string>
+    <string name="title_activity_manager_acc">Quản lý tài khoản</string>
+    <string name="title_activity_statis_deal">Thống kê giao dịch</string>
+    <string name="title_dialog">Thông tin ứng dụng</string>
+    <string name="to_date">Từ</string>
+    <string name="type_acc">Tài khoản</string>
+    <string name="type_deal">Loại GD</string>
+    <string name="type_transaction">Loại GD</string>
+    <string name="version_app"><b>Phiên bản</b> : 1.0</string>
+    <string name="start_date">Select Start Deal</string>
+    <string-array name="add_acc">
+        <item>Thêm TK</item>
+        <item>Tiền mặt</item>
+        <item>Thẻ</item>
+        <item>Tiền Tiết kiệm</item>
+    </string-array>
+    <string name="select_time">Chọn thời gian</string>
+</resources>

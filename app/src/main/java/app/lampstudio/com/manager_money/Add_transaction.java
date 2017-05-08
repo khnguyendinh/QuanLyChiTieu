@@ -231,7 +231,7 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
                 };
                 DatePickerDialog pic = new DatePickerDialog(this, dateCallBack, mcurrentTime.get(Calendar.YEAR),
                         mcurrentTime.get(Calendar.MONTH), mcurrentTime.get(Calendar.DATE));
-                pic.setTitle("Chọn ngày giao dịch");
+                pic.setTitle(getString(R.string.start_date));
                 pic.show();
                 break;
             case R.id.btn_time:
@@ -244,7 +244,7 @@ public class Add_transaction extends AppCompatActivity implements ViewAddDeal, V
                         btn_time.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle(getString(R.string.select_time));
                 mTimePicker.show();
                 break;
             case R.id.btn_save:

@@ -195,7 +195,7 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
                 };
                 DatePickerDialog pic = new DatePickerDialog(this,dateCallBack, mStartDate.get(Calendar.YEAR),
                         mStartDate.get(Calendar.MONTH), mStartDate.get(Calendar.DATE));
-                pic.setTitle("Chọn ngày bắt đầu");
+                pic.setTitle(getString(R.string.start_date));
                 pic.show();
                 break;
             case R.id.btn_end_date:
@@ -214,7 +214,7 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
                 };
                 DatePickerDialog picEnd = new DatePickerDialog(this,dateCallBackEnd, mEndDate.get(Calendar.YEAR),
                         mEndDate.get(Calendar.MONTH), mEndDate.get(Calendar.DATE));
-                picEnd.setTitle("Chọn ngày Kết thúc");
+                picEnd.setTitle(getString(R.string.end_date));
                 picEnd.show();
                 break;
         }

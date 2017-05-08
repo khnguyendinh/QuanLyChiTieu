@@ -9,7 +9,7 @@
     <string name="manager_acc">Manager Account</string>
     <string name="about">Infor</string>
     <string name="type_acc">Account</string>
-    <string name="type_deal">Type Transaction</string>
+    <string name="type_deal">Type</string>
     <string name="spend">Expense</string>
     <string name="revenue">Income</string>
     <string name="iput_money">Input amouts of money</string>
@@ -21,11 +21,11 @@
     <string name="delete">Remove</string>
     <string name="from_date">From</string>
     <string name="to_date">To</string>
-    <string name="date">Date Time</string>
+    <string name="date">Time</string>
     <string name="content">Content</string>
-    <string name="amount_money">Amount of money</string>
+    <string name="amount_money">Amount</string>
     <string name="over_balance">Balance</string>
-    <string name="type_transaction">Type Transaction</string>
+    <string name="type_transaction">Type</string>
     <string-array name="type_acc">
         <item>Cash</item>
         <item>Credit</item>
@@ -41,8 +41,8 @@
         <item>Income</item>
         <item>Expenses</item>
     </string-array>
-    <string name="title_activity_manager_acc">Manager_acc</string>
-    <string name="title_activity_statis_deal">Statis_deal</string>
+    <string name="title_activity_manager_acc">Manager account</string>
+    <string name="title_activity_statis_deal">Static deals</string>
     <string name="add_money">Please input money !</string>
     <string name="title_dialog">Information App</string>
     <string name="name_app"><b>App name</b> : Manager money</string>
@@ -53,4 +53,9 @@
     <string name="id_full_admob">ca-app-pub-7238758076685505/3054763076</string>
     <string name="id_video_admob">ca-app-pub-7238758076685505/8961695876</string>
     <string name="id_native_admob"> ca-app-pub-7238758076685505/4531496278</string>
+    <string name="add_acc_type">Add Account Type</string>
+    <string name="add_acc_money">Add Account Money</string>
+    <string name="start_date">Select Start Deal</string>
+    <string name="select_time">Select Time</string>
+    <string name="end_date">Select end date</string>
 </resources>
