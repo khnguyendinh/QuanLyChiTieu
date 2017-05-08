@@ -53,6 +53,7 @@ public class AdpterAcc_ManagerAcc extends BaseAdapter {
             view = mLayout.inflate(R.layout.item_acc,viewGroup,false);
             viewHolder = new ViewHolder();
             viewHolder.name = (TextView) view.findViewById(R.id.title);
+            viewHolder.money = (TextView) view.findViewById(R.id.money);
             viewHolder.btnDelete = (Button) view.findViewById(R.id.btnDelete);
             viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,10 +69,12 @@ public class AdpterAcc_ManagerAcc extends BaseAdapter {
         }
         ModelTypeAcc modelTypeAcc = mData.get(i);
         viewHolder.name.setText(modelTypeAcc.getName());
+        viewHolder.money.setText(modelTypeAcc.getSum_money()+"");
         return view;
     }
     public class ViewHolder{
         TextView name;
+        TextView money;
         Button btnDelete;
     }
 }
