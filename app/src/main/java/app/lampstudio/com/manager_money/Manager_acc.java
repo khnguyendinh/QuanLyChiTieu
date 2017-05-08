@@ -1,8 +1,10 @@
 package app.lampstudio.com.manager_money;
 
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,11 +34,13 @@ public class Manager_acc extends AppCompatActivity implements View_Manager_acc{
     ArrayList<ModelTypeAcc> arrayList;
     AdpterAcc_ManagerAcc adapterTypeAccount;
     EditText type_acc_add;
+    EditText type_acc_money;
     Button btn_add;
     Presenter_Manager_Acc presenter_manager_acc;
     private AdView mBannerAdView;
     String TAG = "Manager_acc";
     InterstitialAd mInterstitialAd;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +50,26 @@ public class Manager_acc extends AppCompatActivity implements View_Manager_acc{
         listView = (ListView) findViewById(R.id.list_acc);
         arrayList = new ArrayList<>();
         type_acc_add = (EditText) findViewById(R.id.type_acc_add);
+        type_acc_money = (EditText) findViewById(R.id.type_acc_money);
         btn_add = (Button) findViewById(R.id.btn_add);
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(getString(R.string.manager_acc));
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         ShowDataAccount();
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String cotent = type_acc_add.getText().toString();
-                presenter_manager_acc.AddAcc(cotent);
+                long money = Long.parseLong(type_acc_money.getText().toString());
+                ModelTypeAcc modelTypeAcc = new ModelTypeAcc(1,cotent,money);
+                presenter_manager_acc.AddAcc(modelTypeAcc);
             }
         });
 
@@ -122,6 +139,7 @@ public class Manager_acc extends AppCompatActivity implements View_Manager_acc{
         arrayList.add(modelTypeAcc);
         adapterTypeAccount.notifyDataSetChanged();
         type_acc_add.setText("");
+        type_acc_money.setText("");
     }
 
     @Override
