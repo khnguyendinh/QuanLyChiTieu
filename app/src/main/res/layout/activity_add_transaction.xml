@@ -2,163 +2,190 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="15dp">
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
-    <LinearLayout
-        android:id="@+id/btn_botton"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="bottom"
-        android:layout_above="@id/adView"
-        >
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border4_blue"
-            android:text="@string/save"
-            android:textColor="@color/color_white"
-            />
-        <Button
-            android:id="@+id/btn_saveAndClose"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border4_blue"
-            android:text="@string/save_closed"
-            android:layout_alignParentBottom="true"
-            android:textColor="@color/color_white" />
-    </LinearLayout>
-    <ScrollView
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btn_botton"
-        android:fillViewport="true"
-        android:layout_marginBottom="10dp"
-        >
-        <RelativeLayout
+        android:layout_below="@id/my_toolbar"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
+        <LinearLayout
+            android:id="@+id/btn_botton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/adView"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border4_blue"
+                android:text="@string/save"
+                android:textColor="@color/color_white" />
+
+            <Button
+                android:id="@+id/btn_saveAndClose"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border4_blue"
+                android:text="@string/save_closed"
+                android:textColor="@color/color_white" />
+        </LinearLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
+            android:layout_above="@id/btn_botton"
+            android:layout_marginBottom="10dp"
+            android:fillViewport="true">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_alignParentTop="true">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border4_gray"
-                    android:paddingBottom="4dp"
-                    android:paddingLeft="3dp"
-                    android:paddingTop="4dp"
-                    android:text="@string/type_acc"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/tsize_18" />
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/stroke4_blue"
-                    android:drawSelectorOnTop="true"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/border4_gray"
-                    android:paddingBottom="4dp"
-                    android:paddingLeft="3dp"
-                    android:paddingTop="4dp"
-                    android:text="@string/type_deal"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/tsize_18" />
-                <RadioGroup
-                    android:id="@+id/rd_select"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <RadioButton
-                        android:id="@+id/rd_thu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/revenue"
-                        android:textColor="@color/color_black"
-                        android:textSize="@dimen/tsize_18" />
-                    <RadioButton
-                        android:id="@+id/rd_chi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/spend"
-                        android:textColor="@color/color_black"
-                        android:textSize="@dimen/tsize_18" />
-
-                </RadioGroup>
-                <EditText
-                    android:id="@+id/money"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/stroke4_blue"
-                    android:hint="@string/iput_money"
-                    android:inputType="number"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/tsize_20" />
-                <EditText
-                    android:id="@+id/content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/stroke4_blue"
-                    android:hint="@string/iput_content_deal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/tsize_20" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btn_date"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginRight="10dp"
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border4_blue"
-                        android:text="date"
-                        android:textColor="@color/color_white" />
-                    <Button
-                        android:id="@+id/btn_time"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/border4_gray"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/type_acc"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/tsize_18" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/stroke4_blue"
+                        android:drawSelectorOnTop="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/border4_blue"
-                        android:text="time"
-                        android:textColor="@color/color_white" />
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/border4_gray"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/type_deal"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/tsize_18" />
+
+                    <RadioGroup
+                        android:id="@+id/rd_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/rd_thu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/revenue"
+                            android:textColor="@color/color_black"
+                            android:textSize="@dimen/tsize_18" />
+
+                        <RadioButton
+                            android:id="@+id/rd_chi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/spend"
+                            android:textColor="@color/color_black"
+                            android:textSize="@dimen/tsize_18" />
+
+                    </RadioGroup>
+
+                    <EditText
+                        android:id="@+id/money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/stroke4_blue"
+                        android:hint="@string/iput_money"
+                        android:inputType="number"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="@dimen/tsize_20" />
+
+                    <EditText
+                        android:id="@+id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/stroke4_blue"
+                        android:hint="@string/iput_content_deal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:textSize="@dimen/tsize_20" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/border4_blue"
+                            android:text="date"
+                            android:textColor="@color/color_white" />
+
+                        <Button
+                            android:id="@+id/btn_time"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/border4_blue"
+                            android:text="time"
+                            android:textColor="@color/color_white" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-s        </RelativeLayout>
-    </ScrollView>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
 
 </RelativeLayout>
