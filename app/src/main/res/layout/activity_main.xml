@@ -93,6 +93,8 @@
             android:id="@+id/list_acc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:divider="@android:color/transparent"
             android:dividerHeight="4dp"></ListView>
         </RelativeLayout>
 
