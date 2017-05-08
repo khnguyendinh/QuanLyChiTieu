@@ -21,11 +21,11 @@ public class Model_manager_acc {
         sqliteDatabase = new SqliteDatabase(context);
     }
 
-    public void AddAcc(String typeAcc) {
+    public void AddAcc(ModelTypeAcc modelTypeAcc) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Constant.columName_Account, typeAcc);
+        contentValues.put(Constant.columName_Account, modelTypeAcc.getName());
+        contentValues.put(Constant.columMoney_Account, modelTypeAcc.getSum_money());
         sqliteDatabase.InsertData(Constant.tableAccouts,contentValues);
-        ModelTypeAcc modelTypeAcc = new ModelTypeAcc(1,typeAcc,0);
         rpListener_manager_acc.AddAccSuccess(modelTypeAcc);
     }
 
