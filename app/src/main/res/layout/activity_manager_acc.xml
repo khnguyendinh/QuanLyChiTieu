@@ -3,51 +3,81 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp">
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
-    <LinearLayout
-        android:id="@+id/add_bottom"
+    >
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="5dp"
-        android:layout_above="@id/adView">
-        <EditText
-            android:id="@+id/type_acc_add"
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:padding="4dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/stroke4_blue"
-            android:layout_marginRight="10dp"
-            android:entries="@array/add_acc"></EditText>
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/border4_blue"
-            android:text="@string/add"
-            android:textColor="@color/color_white"
-            android:textAllCaps="false"/>
-    </LinearLayout>
-    <ListView
-        android:layout_above="@id/add_bottom"
-        android:id="@+id/list_acc"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="5dp"
-        >
-    </ListView>
+        android:layout_below="@id/my_toolbar"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id">
+        </com.google.android.gms.ads.AdView>
+        <RelativeLayout
+            android:id="@+id/add_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_above="@id/adView">
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border4_blue"
+                android:text="@string/add"
+                android:textColor="@color/color_white"
+                android:textAllCaps="false"/>
+            <EditText
+                android:id="@+id/type_acc_add"
+                android:layout_toLeftOf="@id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
+                android:padding="4dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke4_blue"
+                android:layout_marginRight="10dp"
+                android:hint="@string/add_acc_type"
+                android:entries="@array/add_acc"></EditText>
+            <EditText
+                android:id="@+id/type_acc_money"
+                android:layout_toLeftOf="@id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_below="@id/type_acc_add"
+                android:padding="4dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/stroke4_blue"
+                android:layout_marginRight="10dp"
+                android:hint="@string/add_acc_money"
+                android:entries="@array/add_acc"></EditText>
+
+        </RelativeLayout>
+        <ListView
+            android:layout_above="@id/add_bottom"
+            android:id="@+id/list_acc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5dp"
+            >
+        </ListView>
+        </RelativeLayout>
+
 
 </RelativeLayout>
