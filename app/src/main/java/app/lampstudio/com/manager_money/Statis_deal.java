@@ -1,10 +1,12 @@
 package app.lampstudio.com.manager_money;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,6 +50,7 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
     private AdView mBannerAdView;
     String TAG = "Statis_deal";
     InterstitialAd mInterstitialAd;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,17 @@ public class Statis_deal extends AppCompatActivity implements View.OnClickListen
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
         btn_Start_date.setOnClickListener(this);
         btn_End_date.setOnClickListener(this);
-
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getString(R.string.statis_deal));
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         arraySpinner = new String[DataApp.getInstance().ListTypeAcc.size()];
         for (int i = 0; i < DataApp.getInstance().ListTypeAcc.size(); i++) {
             arraySpinner[i] = DataApp.getInstance().ListTypeAcc.get(i).getName();
