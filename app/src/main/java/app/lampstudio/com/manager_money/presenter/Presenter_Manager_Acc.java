@@ -19,8 +19,8 @@ public class Presenter_Manager_Acc implements RPListener_Manager_acc{
         this.view_manager_acc = view_manager_acc;
         model_manager_acc = new Model_manager_acc(this,context);
     }
-    public void AddAcc(String typeAcc) {
-        model_manager_acc.AddAcc(typeAcc);
+    public void AddAcc(ModelTypeAcc modelTypeAcc) {
+        model_manager_acc.AddAcc(modelTypeAcc);
     }
     public void RemoveAcc(int indexDB,int index) {
         model_manager_acc.RemoveAcc(indexDB,index);
